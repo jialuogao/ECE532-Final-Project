@@ -19,13 +19,20 @@ hsize = 10;
 sigma = 5;
 PSF_G = fspecial('gaussian',hsize,sigma);
 
-T = convmtx2(PSF_W, [size(image)]);
-Y1 = reshape(T*image(:), size(PSF_W)+[size(image)]-1);
+filter = PSF_W
+T = convmtx2(filter, [size(image)]);
+Y1 = reshape(T*image(:), size(filter)+[size(image)]-1);
 figure, imshow(Y1)
 title('Blurred Image')
-Y1 = Y1(3:size(Y1,1)-2,11:size(Y1,2)-10);
+
+Y1_minRow = floor(size(filter,1)/2)+1;
+Y1_maxRow = size(Y1,1)-floor(size(filter,1)/2);
+Y1_minCol = floor(size(filter,2)/2)+1;
+Y1_maxCol = size(Y1,2)-floor(size(filter,2)/2);
+Y1 = Y1(Y1_minRow:Y1_maxRow, Y1_minCol:Y1_maxCol);
+
 A = inv(T'*T)*T';
-X = reshape(A' * Y1(:), size(PSF_W)+[size(image)]-1);
+X = reshape(A' * Y1(:), size(filter)+[size(image)]-1);
 figure,imshow(X)
 title('Restored Image')
 
