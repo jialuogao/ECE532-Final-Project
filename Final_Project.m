@@ -1,6 +1,5 @@
 clear
 close all
-load('kernel_GT_1.mat')
 image = im2double(imread('image_1.jpg'));
 image = imresize(image, 0.2);
 figure;
