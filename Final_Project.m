@@ -25,9 +25,9 @@ Y1 = reshape(T*image(:), size(filter)+[size(image)]-1);
 figure, imshow(Y1)
 title('Blurred Image')
 
-Y1_minRow = ceil(size(filter,1)/2)+1;
+Y1_minRow = ceil(size(filter,1)/2);
 Y1_maxRow = size(Y1,1)-floor(size(filter,1)/2);
-Y1_minCol = ceil(size(filter,2)/2)+1;
+Y1_minCol = ceil(size(filter,2)/2);
 Y1_maxCol = size(Y1,2)-floor(size(filter,2)/2);
 Y1 = Y1(Y1_minRow:Y1_maxRow, Y1_minCol:Y1_maxCol);
 
