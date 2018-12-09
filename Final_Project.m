@@ -11,21 +11,21 @@ title('Original Image')
 % Gaussian filter
 hsize = 5;
 sigma = 5;
-Gas = fspecial('gaussian',hsize,sigma);
+gas = fspecial('gaussian',hsize,sigma);
 % Motion filter (Weiner)
-LEN = 5;
-THETA = 5;
-Mtn = fspecial('motion', LEN, THETA);
+len = 5;
+theta = 5;
+mtn = fspecial('motion', len, theta);
 % Averaging filter
 hsize = 5;
-Avg = fspecial('average',hsize);
+avg = fspecial('average',hsize);
 % Edge filter
-Edg = [0 -1 0; -1 4 -1; 0 -1 0];
+edg = [0 -1 0; -1 4 -1; 0 -1 0];
 % Sharpen filter
-Shr = [0 -1 0; -1 5 -1; 0 -1 0];
+shr = [0 -1 0; -1 5 -1; 0 -1 0];
 
 %% blurring using Gaussian filter 
-filter = Gas;
+filter = gas;
 blurred_img = conv2(image, filter, 'same');
 figure, imshow(blurred_img);
 title('Blurred Image')
