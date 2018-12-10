@@ -31,8 +31,8 @@ figure, imshow(blurred_img);
 title('Blurred Image')
 
 %% deblurring by solving least square without noise
-T = convmtx2(filter, size(image));
-A = (T'*T)\T';
+P = convmtx2(filter, size(image));
+A = (P'*P)\P';
 deblurred_img = reshape(A' * blurred_img(:), size(filter)+size(image)-1);
 % resize the blurred image
 b_minRow = ceil(size(filter,1)/2);
@@ -51,7 +51,7 @@ figure;imshow(blurred_img);
 title('Blurred Image With Noise')
 
 %% deblurring by solving least square with noise
-A = (T'*T)\T';
+A = (P'*P)\P';
 deblurred_img = reshape(A' * blurred_img(:), size(filter)+size(image)-1);
 % resize the blurred image
 b_minRow = ceil(size(filter,1)/2);
@@ -82,7 +82,7 @@ figure,imshow(deblurred_img)
 title('Restored Noisy Image with SVD Low Rank Approximation and LS')
 
 %% deblurring by solving least square with Tikhonov Regularization
-A = (T'*T + 0.005*eye(size(T,2),size(T,2)))\T';
+A = (P'*P + 0.005*eye(size(P,2),size(P,2)))\P';
 deblurred_img = reshape(A' * blurred_img(:), size(filter)+size(image)-1);
 % resize the blurred image
 b_minRow = ceil(size(filter,1)/2);
