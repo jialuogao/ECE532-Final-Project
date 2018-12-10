@@ -30,7 +30,7 @@ blurred_img = conv2(image, filter, 'same');
 figure, imshow(blurred_img);
 title('Blurred Image')
 
-%% deblurring by solving least square
+%% deblurring by solving least square without noise
 T = convmtx2(filter, size(image));
 A = (T'*T)\T';
 deblurred_img = reshape(A' * blurred_img(:), size(filter)+size(image)-1);
@@ -50,7 +50,7 @@ blurred_img = blurred_img - noise;
 figure;imshow(blurred_img);
 title('Blurred Image With Noise')
 
-%% deblurring by solving least square
+%% deblurring by solving least square with noise
 A = (T'*T)\T';
 deblurred_img = reshape(A' * blurred_img(:), size(filter)+size(image)-1);
 % resize the blurred image
