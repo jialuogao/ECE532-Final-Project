@@ -24,8 +24,8 @@ edg = [0 -1 0; -1 4 -1; 0 -1 0];
 % Sharpen filter
 shr = [0 -1 0; -1 5 -1; 0 -1 0];
 
-%% blurring using Gaussian filter 
-filter = gas;
+%% blurring using filters 
+filter = gas;	% change filters right here
 blurred_img = conv2(image, filter, 'same');
 figure, imshow(blurred_img);
 title('Blurred Image')
