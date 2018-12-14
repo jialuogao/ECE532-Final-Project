@@ -13,8 +13,8 @@ hsize = 5;
 sigma = 5;
 gas = fspecial('gaussian',hsize,sigma);
 % Motion filter (Weiner)
-len = ?;
-theta = ?;
+len = 5;
+theta = 10;
 mtn = fspecial('motion', len, theta);
 % Averaging filter
 hsize = 5;
@@ -45,7 +45,7 @@ figure,imshow(deblurred_img)
 title('Restored Image')
 
 %% add noise to the blurred image
-noiselevel = ?;
+noiselevel = 0.01;
 noise = rand(size(image))*noiselevel;
 blurred_img = blurred_img - noise;
 figure;imshow(blurred_img);
