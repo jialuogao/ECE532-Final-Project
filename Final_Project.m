@@ -13,8 +13,8 @@ hsize = 5;
 sigma = 5;
 gas = fspecial('gaussian',hsize,sigma);
 % Motion filter (Weiner)
-len = 10;
-theta = 20;
+len = ?;
+theta = ?;
 mtn = fspecial('motion', len, theta);
 % Averaging filter
 hsize = 5;
